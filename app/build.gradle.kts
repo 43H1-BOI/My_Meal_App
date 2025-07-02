@@ -49,7 +49,7 @@ dependencies {
     implementation(libs.retrofit)
 
     // For Working With Json
-    implementation(libs.convertor.gson)
+    implementation(libs.converter.gson)
 
     // For Image Loading
     implementation(libs.coil.compose)
