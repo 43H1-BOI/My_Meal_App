@@ -52,7 +52,8 @@ dependencies {
     implementation(libs.converter.gson)
 
     // For Image Loading
-    implementation(libs.coil.compose)
+    implementation(libs.coil3.coil.compose)
+    implementation(libs.coil.network.okhttp)
 
     // For Navigation
     implementation(libs.androidx.navigation.compose)
