@@ -41,6 +41,22 @@ android {
 
 dependencies {
 
+    // Extra Dependencies
+    // For ViewModel
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+
+    // For Retrofit
+    implementation(libs.retrofit)
+
+    // For Working With Json
+    implementation(libs.convertor.gson)
+
+    // For Image Loading
+    implementation(libs.coil.compose)
+
+    // For Navigation
+    implementation(libs.androidx.navigation.compose)
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
