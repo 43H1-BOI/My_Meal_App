@@ -4,6 +4,9 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
@@ -25,7 +28,53 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+@Preview
 @Composable
-fun MainApp(){
+fun MainApp() {
+    var viewModel: MainViewModel = viewModel()
+    var recipeState = viewModel.categoryState
 
+    Surface {
+        Column(
+            modifier = Modifier.fillMaxSize()
+        ) {
+            if (!recipeState.value.isLoading) {
+                Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+                    recipeState.value.apply {
+                        if (error != null) { // when error occurs
+                            Text(
+                                buildAnnotatedString {
+                                    withStyle(
+                                        SpanStyle(
+                                            fontWeight = FontWeight.Bold,
+                                            fontSize = 32.sp,
+                                        )
+                                    ) {
+                                        append("Error Occurred : \n")
+                                        withStyle(
+                                            style = SpanStyle(
+                                                color = Color.Red
+                                            )
+                                        ) {
+                                            append(error)
+                                        }
+                                    }
+                                }
+                            )
+                        } else { // when content is loading
+                            CircularProgressIndicator(modifier = Modifier.size(30.dp))
+                        }
+                    }
+                }
+            } else {
+                LazyColumn {
+                    items(recipeState.value.list) { items ->
+                        Row(modifier = Modifier.fillMaxWidth().padding(8.dp)) {
+                            TODO("Create this with name and image")
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
