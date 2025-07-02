@@ -19,11 +19,13 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             MyMealAppTheme {
+                MainApp()
             }
         }
     }
 }
 
 @Composable
+fun MainApp(){
 
 }
