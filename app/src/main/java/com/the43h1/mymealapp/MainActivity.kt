@@ -78,3 +78,70 @@ fun MainApp() {
         }
     }
 }
+
+
+@Preview
+@Composable
+private fun TempPreview() {
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.Center
+    ) {
+        Row(
+            horizontalArrangement = Arrangement.Center,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp)
+        ) {
+            CardView(
+                imageRes = R.drawable.beef,
+                imageDesc = "Beef"
+            )
+            Spacer(modifier = Modifier.width(8.dp))
+            CardView(
+                imageRes = R.drawable.chicken,
+                imageDesc = "Chicken"
+            )
+        }
+    }
+}
+
+
+@Composable
+fun RowScope.CardView(
+    onClick: () -> Unit = {},
+    weight: Float = 1f,
+    imageRes: Int,
+    imageDesc: String,
+    text: String = imageDesc
+) {
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier
+            .height(180.dp)
+            .clip(MaterialTheme.shapes.medium)
+//            .weight(weight)
+            .background(MaterialTheme.colorScheme.background)
+            .padding(vertical = 16.dp, horizontal = 8.dp)
+            .clickable{onClick()}
+    ) {
+        Image(
+            painter = painterResource(imageRes),
+            contentDescription = imageDesc,
+            modifier = Modifier
+//                .fillMaxHeight(0.9f)
+//                .fillMaxWidth()
+                .weight(9f),
+            contentScale = ContentScale.Fit,
+            alignment = Alignment.Center
+        )
+        Text(
+            text = text,
+            modifier = Modifier.weight(1f),
+            fontWeight = FontWeight.Bold,
+            textAlign = TextAlign.Center,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis
+        )
+    }
+}
