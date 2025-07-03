@@ -25,12 +25,71 @@ class MainActivity : ComponentActivity() {
 
                 var navController = rememberNavController()
                 var coroutineScope = rememberCoroutineScope()
-                NavHost(
-                    navController = navController,
-                    startDestination = Screens.HomeScreen.route
-                ) {
-                    composable(Screens.HomeScreen.route) { HomeView(viewModel) }
-                    composable(Screens.CategoriesScreen.route) { CategoriesView(viewModel) }
+
+                Scaffold(
+                    topBar = {
+                        TopAppBar(
+                            title = {
+                                Row {
+                                    Crossfade(
+                                        targetState = isOpened.currentValue
+                                    ) { state ->
+                                        IconButton(onClick = {
+                                            coroutineScope.launch {
+                                                isOpened.apply {
+                                                    if (isOpen) close() else open()
+                                                }
+                                            }
+                                        }) {
+                                            Icon(
+                                                imageVector = when (state) {
+                                                    DrawerValue.Closed -> Icons.Default.Menu
+                                                    DrawerValue.Open -> Icons.Default.Close
+                                                },
+                                                "Menu",
+                                                modifier = Modifier
+                                                    .size(30.dp).graphicsLayer {
+                                                        rotationZ = rotation
+                                                    }
+                                            )
+                                        }
+                                    }
+                                    LogoView(modifier = Modifier.padding(top = 9.dp))
+                                }
+                            }
+                        )
+                    }
+                ) { paddingValue ->
+                    ModalNavigationDrawer(drawerContent = {
+                        Column(
+                            modifier = Modifier
+                                .fillMaxWidth(0.7f)
+                                .fillMaxHeight()
+                                .background(LightRed)
+                        ) {
+
+                        }
+                    }, drawerState = isOpened) {
+                        NavHost(
+                            navController = navController,
+                            startDestination = Screens.HomeScreen.route
+                        ) {
+                            composable(Screens.HomeScreen.route) {
+                                HomeView(
+                                    viewModel,
+                                    paddingValue,
+                                    navController
+                                )
+                            }
+                            composable(Screens.CategoriesScreen.route) {
+                                CategoriesView(
+                                    viewModel,
+                                    paddingValue,
+                                    navController
+                                )
+                            }
+                        }
+                    }
                 }
             }
         }
