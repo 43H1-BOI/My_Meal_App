@@ -42,7 +42,7 @@ fun CardView(
             .clickable { onClick() }
             .size(size)
             .clip(shape = MaterialTheme.shapes.medium)
-            .background(color = MaterialTheme.colorScheme.primaryContainer)
+            .background(color = MaterialTheme.colorScheme.tertiaryContainer)
             .padding(vertical = 16.dp, horizontal = 8.dp)
     ) {
         Image(
@@ -60,7 +60,7 @@ fun CardView(
             textAlign = TextAlign.Center,
             maxLines = 1,
             overflow = TextOverflow.Ellipsis,
-            color = MaterialTheme.colorScheme.onPrimaryContainer
+            color = MaterialTheme.colorScheme.onTertiaryContainer
         )
     }
 }
@@ -83,7 +83,7 @@ fun CardView(
             .clickable { onClick() }
             .size(size)
             .clip(shape = MaterialTheme.shapes.medium)
-            .background(color = MaterialTheme.colorScheme.primaryContainer)
+            .background(color = MaterialTheme.colorScheme.tertiaryContainer)
             .padding(vertical = 16.dp, horizontal = 8.dp)
     ) {
         Image(
@@ -101,7 +101,7 @@ fun CardView(
             textAlign = TextAlign.Center,
             maxLines = 1,
             overflow = TextOverflow.Ellipsis,
-            color = MaterialTheme.colorScheme.onPrimaryContainer
+            color = MaterialTheme.colorScheme.onTertiaryContainer
         )
     }
 }

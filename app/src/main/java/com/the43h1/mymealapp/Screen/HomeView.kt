@@ -1,4 +1,4 @@
-package com.the43h1.mymealapp
+package com.the43h1.mymealapp.Screen
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -14,18 +14,10 @@ import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
+import com.the43h1.mymealapp.MainViewModel
 import com.the43h1.mymealapp.ui.theme.LightRed
-
-sealed class Screens(val route: String) {
-    data object HomeScreen : Screens("home_screen")
-    data object CategoriesScreen : Screens("categories_screen")
-}
 
 @Composable
 fun HomeView(
@@ -35,8 +27,8 @@ fun HomeView(
 ) {
     Column(
         verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier
+        horizontalAlignment = Alignment.Companion.CenterHorizontally,
+        modifier = Modifier.Companion
             .padding(paddingValue)
             .fillMaxSize()
             .clickable {
@@ -58,20 +50,10 @@ fun HomeView(
                     append("DB")
                 }
             },
-            fontWeight = FontWeight.Bold,
+            fontWeight = FontWeight.Companion.Bold,
             fontSize = 32.sp,
             lineHeight = 32.sp
         )
 
     }
-}
-
-@Preview
-@Composable
-private fun TempPreview() {
-    HomeView(
-        viewModel = viewModel(),
-        paddingValue = PaddingValues(10.dp),
-        navController = rememberNavController()
-    )
 }

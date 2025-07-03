@@ -6,48 +6,38 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.animation.Crossfade
-import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Menu
-import androidx.compose.material3.DrawerState
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalNavigationDrawer
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.graphicsLayer
-import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.text.SpanStyle
-import androidx.compose.ui.text.buildAnnotatedString
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.withStyle
-import androidx.compose.ui.unit.TextUnit
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.the43h1.mymealapp.ui.theme.LightRed
+import com.the43h1.mymealapp.Components.AnimatedIconButton
+import com.the43h1.mymealapp.Components.LogoView
+import com.the43h1.mymealapp.Screen.CategoriesView
+import com.the43h1.mymealapp.Screen.HomeView
+import com.the43h1.mymealapp.Screen.Screens
 import com.the43h1.mymealapp.ui.theme.MyMealAppTheme
 import kotlinx.coroutines.launch
 
@@ -60,9 +50,8 @@ class MainActivity : ComponentActivity() {
             MyMealAppTheme {
                 viewModel = viewModel()
 
-
                 var isOpened = rememberDrawerState(
-                    initialValue = DrawerValue.Open
+                    initialValue = DrawerValue.Closed
                 )
 
                 var navController = rememberNavController()
@@ -183,69 +172,12 @@ private fun TempPreview() {
 }
 */
 
+@Preview
 @Composable
-fun LogoView(
-    text1: String = "The",
-    text2: String = "Meal",
-    text3: String = "DB",
-    fontSize: TextUnit = 26.sp,
-    modifier: Modifier = Modifier
-) {
-    Text(
-        buildAnnotatedString {
-            withStyle(
-                style = SpanStyle(
-                    color = LightRed
-                )
-            ) {
-                append(text1)
-            }
-            append(text2)
-            withStyle(style = SpanStyle(color = LightRed)) {
-                append(text3)
-            }
-        },
-        fontWeight = FontWeight.Bold,
-        fontSize = fontSize,
-        modifier = modifier,
-        color = MaterialTheme.colorScheme.onTertiaryContainer
+private fun TempPreview() {
+    HomeView(
+        viewModel = viewModel(),
+        paddingValue = PaddingValues(10.dp),
+        navController = rememberNavController()
     )
-}
-
-
-@Composable
-fun AnimatedIconButton(
-    isOpened: DrawerState,
-    onClick: () -> Unit = {},
-    menuIcon: ImageVector,
-    closeIcon: ImageVector
-) {
-    val rotation by animateFloatAsState(
-        targetValue = if (isOpened.currentValue == DrawerValue.Open) 90f else 0f,
-        label = "iconRotation"
-    )
-
-    Crossfade(
-        targetState = isOpened.currentValue
-    ) { state ->
-        IconButton(
-            onClick = {
-                onClick()
-            }
-        ) {
-            Icon(
-                imageVector = when (state) {
-                    DrawerValue.Closed -> menuIcon
-                    DrawerValue.Open -> closeIcon
-                },
-                "Menu",
-                modifier = Modifier
-                    .size(30.dp)
-                    .graphicsLayer {
-                        rotationZ = rotation
-                    },
-                tint = MaterialTheme.colorScheme.onTertiaryContainer
-            )
-        }
-    }
 }

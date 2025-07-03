@@ -1,6 +1,6 @@
 @file:OptIn(ExperimentalMaterial3Api::class)
 
-package com.the43h1.mymealapp
+package com.the43h1.mymealapp.Screen
 
 import ErrorScreen
 import androidx.compose.foundation.layout.Arrangement
@@ -20,6 +20,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.the43h1.mymealapp.Components.CardView
+import com.the43h1.mymealapp.MainViewModel
 
 @Composable
 fun CategoriesView(
