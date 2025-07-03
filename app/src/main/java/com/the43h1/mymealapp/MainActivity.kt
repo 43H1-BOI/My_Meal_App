@@ -40,29 +40,14 @@ class MainActivity : ComponentActivity() {
                         TopAppBar(
                             title = {
                                 Row {
-                                    Crossfade(
-                                        targetState = isOpened.currentValue
-                                    ) { state ->
-                                        IconButton(onClick = {
-                                            coroutineScope.launch {
-                                                isOpened.apply {
-                                                    if (isOpen) close() else open()
-                                                }
+                                    AnimatedIconButton(isOpened, onClick = {
+                                        coroutineScope.launch {
+                                            isOpened.apply {
+                                                if (isOpen) close() else open()
                                             }
-                                        }) {
-                                            Icon(
-                                                imageVector = when (state) {
-                                                    DrawerValue.Closed -> Icons.Default.Menu
-                                                    DrawerValue.Open -> Icons.Default.Close
-                                                },
-                                                "Menu",
-                                                modifier = Modifier
-                                                    .size(30.dp).graphicsLayer {
-                                                        rotationZ = rotation
-                                                    }
-                                            )
                                         }
-                                    }
+                                    }, Icons.Default.Menu, Icons.Default.Close)
+
                                     LogoView(modifier = Modifier.padding(top = 9.dp))
                                 }
                             }
