@@ -163,3 +163,31 @@ private fun TempPreview() {
     }
 }
 */
+
+@Composable
+fun LogoView(
+    text1: String = "The",
+    text2: String = "Meal",
+    text3: String = "DB",
+    fontSize: TextUnit = 26.sp,
+    modifier: Modifier = Modifier
+) {
+    Text(
+        buildAnnotatedString {
+            withStyle(
+                style = SpanStyle(
+                    color = LightRed
+                )
+            ) {
+                append(text1)
+            }
+            append(text2)
+            withStyle(style = SpanStyle(color = LightRed)) {
+                append(text3)
+            }
+        },
+        fontWeight = FontWeight.Bold,
+        fontSize = fontSize,
+        modifier = modifier
+    )
+}
