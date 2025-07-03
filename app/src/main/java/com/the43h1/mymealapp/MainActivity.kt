@@ -23,6 +23,15 @@ class MainActivity : ComponentActivity() {
             MyMealAppTheme {
                 viewModel = viewModel()
 
+
+                var isOpened = rememberDrawerState(
+                    initialValue = DrawerValue.Open
+                )
+                val rotation by animateFloatAsState(
+                    targetValue = if (isOpened.currentValue == DrawerValue.Open) 90f else 0f,
+                    label = "iconRotation"
+                )
+
                 var navController = rememberNavController()
                 var coroutineScope = rememberCoroutineScope()
 
