@@ -99,7 +99,37 @@ fun MainApp() {
 }
 
 
-@Preview
+@Composable
+fun TwoElementView(
+    modifier: Modifier = Modifier,
+    image1Res: Int,
+    image1Desc: String,
+    image2Res: Int,
+    image2Desc: String,
+    spacerModifier: Modifier = Modifier.width(16.dp)
+) {
+    Row(
+        horizontalArrangement = Arrangement.Center,
+        modifier = modifier
+            .padding(8.dp)
+            .fillMaxWidth()
+    ) {
+        CardView(
+            imageRes = image1Res,
+            imageDesc = image1Desc
+        )
+
+        Spacer(modifier = spacerModifier)
+
+        CardView(
+            imageRes = image2Res,
+            imageDesc = image2Desc
+        )
+    }
+}
+
+
+//@Preview
 @Composable
 private fun TempPreview() {
     Column(
