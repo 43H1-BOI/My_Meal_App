@@ -63,3 +63,44 @@ fun CardView(
         )
     }
 }
+
+
+/** Takes Category as Parameter */
+@Composable
+fun CardView(
+    onClick: () -> Unit = {},
+    category: Category,
+    height: Dp = 200.dp,
+    width: Dp = height * 4 / 5f, // for Aspect Ratio of 4:5
+    size: DpSize = DpSize(width, height),
+    modifier: Modifier = Modifier
+) {
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = modifier
+            .padding(8.dp)
+            .size(size)
+            .clip(shape = MaterialTheme.shapes.medium)
+            .background(color = MaterialTheme.colorScheme.primaryContainer)
+            .padding(vertical = 16.dp, horizontal = 8.dp)
+            .clickable { onClick() }
+    ) {
+        Image(
+            painter = rememberAsyncImagePainter(category.strCategoryThumb),
+            contentDescription = category.strCategoryDescription,
+            modifier = Modifier
+                .weight(9f),
+            contentScale = ContentScale.Fit,
+            alignment = Alignment.Center
+        )
+        Text(
+            text = category.strCategoryDescription,
+            modifier = Modifier.weight(1f),
+            fontWeight = FontWeight.Bold,
+            textAlign = TextAlign.Center,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
+            color = MaterialTheme.colorScheme.onPrimaryContainer
+        )
+    }
+}
