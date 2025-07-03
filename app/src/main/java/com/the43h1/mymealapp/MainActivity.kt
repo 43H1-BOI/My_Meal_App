@@ -7,15 +7,31 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.the43h1.mymealapp.ui.theme.MyMealAppTheme
 
 class MainActivity : ComponentActivity() {
+    lateinit var viewModel: MainViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
             MyMealAppTheme {
-                MainView()
+                viewModel = viewModel()
+
+                var navController = rememberNavController()
+                var coroutineScope = rememberCoroutineScope()
+                NavHost(
+                    navController = navController,
+                    startDestination = Screens.HomeScreen.route
+                ) {
+                    composable(Screens.HomeScreen.route) { HomeView(viewModel) }
+                    composable(Screens.CategoriesScreen.route) { CategoriesView(viewModel) }
+                }
             }
         }
     }

@@ -22,12 +22,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.the43h1.mymealapp.Components.CardView
 
 @Composable
-fun MainView() {
-    var viewModel: MainViewModel = viewModel()
+fun CategoriesView(viewModel: MainViewModel) {
     var recipeState = viewModel.categoryState
 
     Scaffold(
