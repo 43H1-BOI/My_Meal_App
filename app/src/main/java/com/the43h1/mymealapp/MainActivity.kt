@@ -67,10 +67,29 @@ fun MainApp() {
                     }
                 }
             } else {
-                LazyColumn {
-                    items(recipeState.value.list) { items ->
-                        Row(modifier = Modifier.fillMaxWidth().padding(8.dp)) {
-                            TODO("Create this with name and image")
+                LazyColumn(
+                    modifier = Modifier
+                        .fillMaxSize()
+                ) {
+//                    items(recipeState.value.list) { items ->
+                    item {
+                        Row(
+                            horizontalArrangement = Arrangement.Center,
+                            modifier = Modifier
+                                .padding(8.dp)
+                                .fillMaxWidth()
+                        ) {
+                            CardView(
+                                imageRes = R.drawable.beef,
+                                imageDesc = "Beef"
+                            )
+
+                            Spacer(modifier = Modifier.width(16.dp))
+
+                            CardView(
+                                imageRes = R.drawable.chicken,
+                                imageDesc = "Chicken"
+                            )
                         }
                     }
                 }
