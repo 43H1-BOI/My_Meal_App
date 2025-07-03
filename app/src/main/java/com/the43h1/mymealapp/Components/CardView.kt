@@ -1,4 +1,4 @@
-package com.the43h1.mymealapp
+package com.the43h1.mymealapp.Components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -21,6 +21,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
 import coil3.compose.rememberAsyncImagePainter
+import com.the43h1.mymealapp.Category
 
 /** Takes image individually as Parameter */
 @Composable
