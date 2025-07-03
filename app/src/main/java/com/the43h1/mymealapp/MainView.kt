@@ -26,7 +26,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.the43h1.mymealapp.Components.CardView
 
 @Composable
-fun MainApp() {
+fun MainView() {
     var viewModel: MainViewModel = viewModel()
     var recipeState = viewModel.categoryState
 
