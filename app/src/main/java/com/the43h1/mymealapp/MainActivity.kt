@@ -108,9 +108,8 @@ private fun TempPreview() {
 
 
 @Composable
-fun RowScope.CardView(
+fun CardView(
     onClick: () -> Unit = {},
-    weight: Float = 1f,
     imageRes: Int,
     imageDesc: String,
     text: String = imageDesc
@@ -120,7 +119,6 @@ fun RowScope.CardView(
         modifier = Modifier
             .height(180.dp)
             .clip(MaterialTheme.shapes.medium)
-//            .weight(weight)
             .background(MaterialTheme.colorScheme.background)
             .padding(vertical = 16.dp, horizontal = 8.dp)
             .clickable{onClick()}
@@ -129,8 +127,6 @@ fun RowScope.CardView(
             painter = painterResource(imageRes),
             contentDescription = imageDesc,
             modifier = Modifier
-//                .fillMaxHeight(0.9f)
-//                .fillMaxWidth()
                 .weight(9f),
             contentScale = ContentScale.Fit,
             alignment = Alignment.Center
