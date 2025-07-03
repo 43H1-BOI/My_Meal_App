@@ -134,7 +134,8 @@ fun TwoElementView(
 private fun TempPreview() {
     Column(
         modifier = Modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.Center
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Row(
             horizontalArrangement = Arrangement.Center,
