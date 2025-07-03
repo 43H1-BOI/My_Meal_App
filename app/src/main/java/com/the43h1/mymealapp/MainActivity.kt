@@ -112,7 +112,10 @@ fun CardView(
     onClick: () -> Unit = {},
     imageRes: Int,
     imageDesc: String,
-    text: String = imageDesc
+    text: String = imageDesc,
+    height: Dp = 180.dp,
+    width: Dp = height * 4 / 5f, // for Aspect Ratio of 4:5
+    size: DpSize = DpSize(width, height)
 ) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
