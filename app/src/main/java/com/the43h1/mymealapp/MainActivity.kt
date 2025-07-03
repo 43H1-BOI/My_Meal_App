@@ -50,7 +50,8 @@ class MainActivity : ComponentActivity() {
 
                                     LogoView(modifier = Modifier.padding(top = 9.dp))
                                 }
-                            }
+                            },
+                            colors = TopAppBarDefaults.topAppBarColors(containerColor = MaterialTheme.colorScheme.tertiaryContainer)
                         )
                     }
                 ) { paddingValue ->
@@ -59,7 +60,7 @@ class MainActivity : ComponentActivity() {
                             modifier = Modifier
                                 .fillMaxWidth(0.7f)
                                 .fillMaxHeight()
-                                .background(LightRed)
+                                .background(MaterialTheme.colorScheme.tertiaryContainer)
                         ) {
 
                         }
@@ -173,6 +174,45 @@ fun LogoView(
         },
         fontWeight = FontWeight.Bold,
         fontSize = fontSize,
-        modifier = modifier
+        modifier = modifier,
+        color = MaterialTheme.colorScheme.onTertiaryContainer
     )
+}
+
+
+@Composable
+fun AnimatedIconButton(
+    isOpened: DrawerState,
+    onClick: () -> Unit = {},
+    menuIcon: ImageVector,
+    closeIcon: ImageVector
+) {
+    val rotation by animateFloatAsState(
+        targetValue = if (isOpened.currentValue == DrawerValue.Open) 90f else 0f,
+        label = "iconRotation"
+    )
+
+    Crossfade(
+        targetState = isOpened.currentValue
+    ) { state ->
+        IconButton(
+            onClick = {
+                onClick()
+            }
+        ) {
+            Icon(
+                imageVector = when (state) {
+                    DrawerValue.Closed -> menuIcon
+                    DrawerValue.Open -> closeIcon
+                },
+                "Menu",
+                modifier = Modifier
+                    .size(30.dp)
+                    .graphicsLayer {
+                        rotationZ = rotation
+                    },
+                tint = MaterialTheme.colorScheme.onTertiaryContainer
+            )
+        }
+    }
 }
