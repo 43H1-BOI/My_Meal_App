@@ -1,12 +1,9 @@
-package com.the43h1.mymealapp.ui.theme
+package com.the43h1.mymealapp
 
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.the43h1.mymealapp.CategoriesResponse
-import com.the43h1.mymealapp.Category
-import com.the43h1.mymealapp.recipeServices
 import kotlinx.coroutines.launch
 
 class MainViewModel : ViewModel() {

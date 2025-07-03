@@ -38,11 +38,11 @@ fun CardView(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = modifier
             .padding(8.dp)
+            .clickable { onClick() }
             .size(size)
             .clip(shape = MaterialTheme.shapes.medium)
             .background(color = MaterialTheme.colorScheme.primaryContainer)
             .padding(vertical = 16.dp, horizontal = 8.dp)
-            .clickable { onClick() }
     ) {
         Image(
             painter = painterResource(id = imageRes),
@@ -79,22 +79,22 @@ fun CardView(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = modifier
             .padding(8.dp)
+            .clickable { onClick() }
             .size(size)
             .clip(shape = MaterialTheme.shapes.medium)
             .background(color = MaterialTheme.colorScheme.primaryContainer)
             .padding(vertical = 16.dp, horizontal = 8.dp)
-            .clickable { onClick() }
     ) {
         Image(
             painter = rememberAsyncImagePainter(category.strCategoryThumb),
-            contentDescription = category.strCategoryDescription,
+            contentDescription = category.strCategory,
             modifier = Modifier
-                .weight(9f),
+                .weight(8f),
             contentScale = ContentScale.Fit,
             alignment = Alignment.Center
         )
         Text(
-            text = category.strCategoryDescription,
+            text = category.strCategory,
             modifier = Modifier.weight(1f),
             fontWeight = FontWeight.Bold,
             textAlign = TextAlign.Center,

@@ -6,7 +6,7 @@ import retrofit2.http.GET
 
 // object to fetch response from web using retrofit
 private val recipe = Retrofit.Builder()
-    .baseUrl("www.themealdb.com/api/json/v1/1/")
+    .baseUrl("https://www.themealdb.com/api/json/v1/1/")
     .addConverterFactory(GsonConverterFactory.create())
     .build()
 
