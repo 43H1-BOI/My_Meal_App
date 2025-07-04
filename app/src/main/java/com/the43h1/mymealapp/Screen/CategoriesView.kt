@@ -59,6 +59,9 @@ fun CategoriesView(
                         CardView(category = item)
                     }
                 }
+            } else { // when content is loading
+                CircularProgressIndicator(modifier = Modifier.size(30.dp))
+
             }
         }
     }
