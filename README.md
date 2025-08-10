@@ -2,12 +2,14 @@
 
 > A Meal App to Learn JSON, Databases, and other new concepts.
 
-<!-- Image banner placeholder -->
-<!-- ![App Banner](media/banner_image.png) -->
-![Screenshot 1](media/screenshot1.png)
-![Screenshot 2](media/screenshot2.png)
-![Screenshot 3](media/screenshot3.png)
-![Screenshot 4](media/screenshot4.png)
+
+## Screenshots
+
+<p align="center">
+  <img src="media/screenshot1.png" width="30%" />
+  <img src="media/screenshot2.png" width="30%" />
+  <img src="media/screenshot3.png" width="30%" />
+</p>
 
 ---
 
